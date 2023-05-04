@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traveling_app/screens/profile_screen.dart';
 import '../widgets/app_drawer.dart';
 import './categories_screen.dart';
 import './favorites_screen.dart';
@@ -37,6 +38,10 @@ class _TabsScreenState extends State<TabsScreen> {
         'Screen': FavoritesScreen(widget.favoriteTrips),
         'Title': 'الرحلات المفضلة',
       },
+      {
+        'Screen': ProfileScreen(),
+        'Title': 'الملف الشخصي',
+      },
     ];
     super.initState();
   }
@@ -63,6 +68,11 @@ class _TabsScreenState extends State<TabsScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.star),
             label: 'المفضلة',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_rounded),
+            label: 'الملف الشخصي',
           ),
         ],
       ),

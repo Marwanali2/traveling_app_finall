@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:traveling_app/app_data.dart';
+import 'package:traveling_app/screens/payment_screen.dart';
+
+import '../widgets/custom_button.dart';
 
 class TripDetailScreen extends StatelessWidget {
   static const screenRoute = '/trip-detail';
@@ -15,7 +18,10 @@ class TripDetailScreen extends StatelessWidget {
       alignment: Alignment.topRight,
       child: Text(
         titleText,
-        style: Theme.of(context).textTheme.headline5,
+        style: Theme
+            .of(context)
+            .textTheme
+            .headline5,
       ),
     );
   }
@@ -36,7 +42,10 @@ class TripDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tripId = ModalRoute.of(context).settings.arguments as String;
+    final tripId = ModalRoute
+        .of(context)
+        .settings
+        .arguments as String;
     final selectedTrip = Trips_data.firstWhere((trip) => trip.id == tripId);
 
     return Scaffold(
@@ -59,16 +68,17 @@ class TripDetailScreen extends StatelessWidget {
             buildListViewContainer(
               ListView.builder(
                 itemCount: selectedTrip.activities.length,
-                itemBuilder: (ctx, index) => Card(
-                  elevation: 0.3,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 10,
+                itemBuilder: (ctx, index) =>
+                    Card(
+                      elevation: 0.3,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 5,
+                          horizontal: 10,
+                        ),
+                        child: Text(selectedTrip.activities[index]),
+                      ),
                     ),
-                    child: Text(selectedTrip.activities[index]),
-                  ),
-                ),
               ),
             ),
             SizedBox(height: 10),
@@ -76,20 +86,25 @@ class TripDetailScreen extends StatelessWidget {
             buildListViewContainer(
               ListView.builder(
                 itemCount: selectedTrip.program.length,
-                itemBuilder: (ctx, index) => Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        child: Text('يوم ${index + 1}'),
-                      ),
-                      title: Text(selectedTrip.program[index]),
+                itemBuilder: (ctx, index) =>
+                    Column(
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            child: Text('يوم ${index + 1}'),
+                          ),
+                          title: Text(selectedTrip.program[index]),
+                        ),
+                        Divider(),
+                      ],
                     ),
-                    Divider(),
-                  ],
-                ),
               ),
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 25),
+            CustomButton(text: "Book", onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentScreen(),));
+            },),
+            SizedBox(height: 50),
           ],
         ),
       ),
