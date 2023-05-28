@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../screens/category_trips_screen.dart';
+
+import '../../../features/home/presentation/views/category_trips_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final String id;

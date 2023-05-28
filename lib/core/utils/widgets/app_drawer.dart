@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../screens/filters_screen.dart';
-import '../screens/tabs_screen.dart';
+
+import '../../../features/home/presentation/views/filters_screen.dart';
+import '../../../features/home/presentation/views/tabs_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key ?key}) : super(key: key);

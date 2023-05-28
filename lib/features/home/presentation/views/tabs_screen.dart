@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:traveling_app/screens/profile_screen.dart';
-import '../widgets/app_drawer.dart';
+import '../../../../core/utils/models/trip.dart';
+import '../../../../core/utils/widgets/app_drawer.dart';
+import '../../../favorites/presentation/views/favorites_screen.dart';
+import '../../../profile/presentation/views/profile_screen.dart';
 import './categories_screen.dart';
-import './favorites_screen.dart';
-import '../models/trip.dart';
-
 class TabsScreen extends StatefulWidget {
   // const TabsScreen({Key key}) : super(key: key);
 static String id="TabsScreen";

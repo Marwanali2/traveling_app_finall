@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/card_payment.dart';
+import '../../../../core/utils/widgets/card_payment.dart';
+
 class PaymentScreen extends StatelessWidget {
    PaymentScreen({Key?key}) : super(key: key);
   static String id="PaymentScreenId";

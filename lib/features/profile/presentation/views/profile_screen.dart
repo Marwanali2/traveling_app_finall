@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/custom_card.dart';
+import '../../../../core/utils/widgets/custom_card.dart';
+
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key?key}) : super(key: key);

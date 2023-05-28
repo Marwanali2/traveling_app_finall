@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:traveling_app/app_data.dart';
-import 'package:traveling_app/screens/payment_screen.dart';
 
-import '../widgets/custom_button.dart';
+import '../../../../core/utils/assets/app_data.dart';
+import '../../../../core/utils/widgets/custom_button.dart';
+import '../../../payment/presentation/views/payment_screen.dart';
 
 class TripDetailScreen extends StatelessWidget {
   static const screenRoute = '/trip-detail';

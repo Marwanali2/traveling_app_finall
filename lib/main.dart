@@ -1,15 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:traveling_app/screens/login_screen.dart';
-import 'package:traveling_app/screens/signup_screen.dart';
-import './app_data.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import './screens/filters_screen.dart';
-import './screens/tabs_screen.dart';
-import './screens/trip_detail_screen.dart';
-import './screens/category_trips_screen.dart';
-import './models/trip.dart';
+import 'package:traveling_app/core/utils/assets/app_data.dart';
+import 'package:traveling_app/simple_bloc_observer.dart';
 
-void main() {
+import 'core/utils/models/trip.dart';
+import 'features/auth/presentation/managers/auth_cubit/auth_cubit.dart';
+import 'features/auth/presentation/views/login_screen.dart';
+import 'features/auth/presentation/views/signup_screen.dart';
+import 'features/home/presentation/views/category_trips_screen.dart';
+import 'features/home/presentation/views/filters_screen.dart';
+import 'features/home/presentation/views/tabs_screen.dart';
+import 'features/trip_details/presentation/views/trip_detail_screen.dart';
+
+
+void main() async{
+  Bloc.observer = SimpleBlocObserver();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -68,48 +77,53 @@ class _MyAppState extends State<MyApp> {
   }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AuthCubit()),
       ],
-      supportedLocales: [
-        const Locale('ar', 'AE'), // English, no country code
-      ],
-      title: 'Travel App',
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          hintColor: Colors.amber,
-          fontFamily: 'ElMessiri',
-          textTheme: ThemeData.light().textTheme.copyWith(
-                headline5: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 24,
-                  fontFamily: 'ElMessiri',
-                  fontWeight: FontWeight.bold,
-                ),
-                headline6: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontFamily: 'ElMessiri',
-                  fontWeight: FontWeight.bold,
-                ),
-              )),
-      // home: CategoriesScreen(),
-      initialRoute: '/',
-      routes: {
-        '/':(ctx) => SignUpScreen(),
-        TabsScreen.id: (ctx) => TabsScreen(_favoriteTrips),
-        CategoryTripsScreen.screenRoute: (ctx) =>
-            CategoryTripsScreen(_availableTrips),
-        TripDetailScreen.screenRoute: (ctx) =>
-            TripDetailScreen(_manageFavorite, _isFovarite),
-        FiltersScreen.screenRoute: (ctx) =>
-            FiltersScreen(_filters, _changeFilters),
-        SignUpScreen.id:(context) =>SignUpScreen(),
-        LoginScreen.id:(context) => LoginScreen(),
-      },
+      child: MaterialApp(
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('ar', 'AE'), // English, no country code
+        ],
+        title: 'Travel App',
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+            hintColor: Colors.amber,
+            fontFamily: 'ElMessiri',
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  headline5: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 24,
+                    fontFamily: 'ElMessiri',
+                    fontWeight: FontWeight.bold,
+                  ),
+                  headline6: TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontFamily: 'ElMessiri',
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+        // home: CategoriesScreen(),
+        initialRoute: '/',
+        routes: {
+          '/':(ctx) => SignUpScreen(),
+          TabsScreen.id: (ctx) => TabsScreen(_favoriteTrips),
+          CategoryTripsScreen.screenRoute: (ctx) =>
+              CategoryTripsScreen(_availableTrips),
+          TripDetailScreen.screenRoute: (ctx) =>
+              TripDetailScreen(_manageFavorite, _isFovarite),
+          FiltersScreen.screenRoute: (ctx) =>
+              FiltersScreen(_filters, _changeFilters),
+          SignUpScreen.id:(context) =>SignUpScreen(),
+          LoginScreen.id:(context) => LoginScreen(),
+        },
+      ),
     );
   }
 }

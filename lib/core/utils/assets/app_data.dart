@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import './models/category.dart';
-import './models/trip.dart';
+
+import '../models/category.dart';
+import '../models/trip.dart';
+
 
 const Categories_data = const [
   Category(
