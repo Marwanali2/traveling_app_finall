@@ -12,12 +12,12 @@ class TripItem extends StatelessWidget {
   // final Function removeItem;
 
   TripItem({
-    @required this.id,
-    @required this.title,
-    @required this.imageUrl,
-    @required this.duration,
-    @required this.tripType,
-    @required this.season,
+    required this.id,
+    required this.title,
+    required this.imageUrl,
+    required this.duration,
+    required this.tripType,
+    required this.season,
     // @required this.removeItem,
   });
 
@@ -133,7 +133,7 @@ class TripItem extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.today,
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       SizedBox(
                         width: 6,
@@ -145,7 +145,7 @@ class TripItem extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.wb_sunny,
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       SizedBox(
                         width: 6,
@@ -157,7 +157,7 @@ class TripItem extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.family_restroom,
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       SizedBox(
                         width: 6,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
-  CustomButton({this.text,this.onPressed,this.isLoading=false});
+  CustomButton({required this.text,required this.onPressed,this.isLoading=false});
   String text;
   VoidCallback onPressed;
   final bool  isLoading;

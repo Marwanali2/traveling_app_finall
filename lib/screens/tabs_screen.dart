@@ -7,7 +7,7 @@ import '../models/trip.dart';
 
 class TabsScreen extends StatefulWidget {
   // const TabsScreen({Key key}) : super(key: key);
-
+static String id="TabsScreen";
   final List<Trip> favoriteTrips;
 
   TabsScreen(this.favoriteTrips);
@@ -25,7 +25,7 @@ class _TabsScreenState extends State<TabsScreen> {
 
   int _selectedScreenIndex = 0;
 
-  List<Map<String, Object>> _screens;
+  List<Map<String, dynamic>> _screens=[];
 
   @override
   void initState() {
@@ -57,7 +57,7 @@ class _TabsScreenState extends State<TabsScreen> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectScreen,
         backgroundColor: Theme.of(context).primaryColor,
-        selectedItemColor: Theme.of(context).accentColor,
+        selectedItemColor: Theme.of(context).hintColor,
         unselectedItemColor: Colors.white,
         currentIndex: _selectedScreenIndex,
         items: [

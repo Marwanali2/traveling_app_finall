@@ -44,7 +44,7 @@ class TripDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final tripId = ModalRoute
         .of(context)
-        .settings
+        ?.settings
         .arguments as String;
     final selectedTrip = Trips_data.firstWhere((trip) => trip.id == tripId);
 

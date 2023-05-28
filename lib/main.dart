@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:traveling_app/screens/login_screen.dart';
+import 'package:traveling_app/screens/signup_screen.dart';
 import './app_data.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import './screens/filters_screen.dart';
@@ -64,7 +66,6 @@ class _MyAppState extends State<MyApp> {
   bool _isFovarite(String id) {
     return _favoriteTrips.any((trip) => trip.id == id);
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -79,7 +80,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Travel App',
       theme: ThemeData(
           primarySwatch: Colors.blue,
-          accentColor: Colors.amber,
+          hintColor: Colors.amber,
           fontFamily: 'ElMessiri',
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline5: TextStyle(
@@ -98,13 +99,16 @@ class _MyAppState extends State<MyApp> {
       // home: CategoriesScreen(),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => TabsScreen(_favoriteTrips),
+        '/':(ctx) => SignUpScreen(),
+        TabsScreen.id: (ctx) => TabsScreen(_favoriteTrips),
         CategoryTripsScreen.screenRoute: (ctx) =>
             CategoryTripsScreen(_availableTrips),
         TripDetailScreen.screenRoute: (ctx) =>
             TripDetailScreen(_manageFavorite, _isFovarite),
         FiltersScreen.screenRoute: (ctx) =>
             FiltersScreen(_filters, _changeFilters),
+        SignUpScreen.id:(context) =>SignUpScreen(),
+        LoginScreen.id:(context) => LoginScreen(),
       },
     );
   }

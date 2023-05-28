@@ -6,5 +6,5 @@ class Category {
   final String imageUrl;
 
   const Category(
-      {@required this.id, @required this.title, @required this.imageUrl});
+      {required this.id, required this.title, required this.imageUrl});
 }

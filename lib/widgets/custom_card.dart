@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
   CustomCard(
-      {Key key,
-      @required this.icon,
-      @required this.title,
-      @required this.icon2})
+      {Key?key,
+      required this.icon,
+      required this.title,
+      required this.icon2})
       : super(key: key);
   IconData icon;
   final title;
@@ -34,7 +34,7 @@ class CustomCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12)),
                   child: Icon(
                     icon,
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).colorScheme.secondary,
                   )),
               SizedBox(
                 width: 13,

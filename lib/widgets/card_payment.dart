@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardPayment extends StatelessWidget {
-  const CardPayment({Key key, @required this.title,@required this.image}) : super(key: key);
+  const CardPayment({Key?key, required this.title,required this.image}) : super(key: key);
   final String title;
   final image;
 

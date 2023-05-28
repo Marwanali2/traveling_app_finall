@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../screens/filters_screen.dart';
+import '../screens/tabs_screen.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key key}) : super(key: key);
+  const AppDrawer({Key ?key}) : super(key: key);
 
-  Widget buildListTile(String title, IconData icon, Function onTapLink) {
+  Widget buildListTile(String title, IconData icon, void Function()? onTapLink) {
     return ListTile(
       leading: Icon(
         icon,
@@ -33,7 +34,7 @@ class AppDrawer extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.only(top: 40),
             alignment: Alignment.center,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
             child: Text(
               'دليلك السياحي',
               style: Theme.of(context).textTheme.headline6,
@@ -44,7 +45,7 @@ class AppDrawer extends StatelessWidget {
             'الرحلات',
             Icons.card_travel,
             () {
-              Navigator.of(context).pushReplacementNamed('/');
+              Navigator.of(context).pushReplacementNamed(TabsScreen.id);
             },
           ),
           buildListTile(

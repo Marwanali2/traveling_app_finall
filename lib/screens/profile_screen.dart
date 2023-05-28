@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_card.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({Key key}) : super(key: key);
+  ProfileScreen({Key?key}) : super(key: key);
   var licon1 = [
     Icons.person,
     Icons.notifications,

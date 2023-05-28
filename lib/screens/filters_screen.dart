@@ -20,14 +20,14 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   @override
   initState() {
-    _summer = widget.currentFilters['summer'];
-    _winter = widget.currentFilters['winter'];
-    _family = widget.currentFilters['family'];
+    _summer = widget.currentFilters['summer']!;
+    _winter = widget.currentFilters['winter']!;
+    _family = widget.currentFilters['family']!;
     super.initState();
   }
 
   Widget buildSwitchListTile(
-      String title, String subtitle, var currentValue, Function updateValue) {
+      String title, String subtitle, var currentValue, void Function(dynamic) updateValue) {
     return SwitchListTile(
       title: Text(title),
       subtitle: Text(subtitle),
